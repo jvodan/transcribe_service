@@ -85,9 +85,9 @@ def translate_dir(d, r , translator):
     c = len(os.listdir(d))
     while c > 0:
      for filename in os.listdir(d):
-      if filename.endswith(".wav"):
-        filepath = os.path.join(d, filename)
-        translator.translate(filepath)
+      #if filename.endswith(".wav"):
+      filepath = os.path.join(d, filename)
+      translator.translate(filepath)
      if r == False:
       c = 0
      else:
@@ -98,7 +98,7 @@ def main():
     parser = argparse.ArgumentParser(description="Whisper Translator Command Line Arguments")
     parser.add_argument("model_name", help="The name of the Whisper model to use. tiny|base|small|medium")
     parser.add_argument("-f", "--fp16", action="store_true", help="Enable mixed-precision inference. 16 not always faster 32 better on maxwell")
-    parser.add_argument("-w", "--wav-path", help="The path to the input directorty of WAVs to transcribe.")
+    parser.add_argument("-w", "--wav-path", help="The path to the input directory of WAVs to transcribe.")
     parser.add_argument("-o", "--output-path", help="The directory path to write the output transcript files.")
     parser.add_argument("-p", "--pipe-path", help="The path to the named pipe to write the output transcript to.")
     parser.add_argument("-W", "--watch", action="store_true", help="Watch the wav_path and transcbribe files as they appear.")
