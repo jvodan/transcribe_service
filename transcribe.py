@@ -80,7 +80,7 @@ def watch_dir():
         observer.stop()
     observer.join()
 
-def translate_dir(d, r = False, translator):
+def translate_dir(d, r , translator):
     c = len(os.listdir(d))
     while c > 0:
      for filename in os.listdir(d):
