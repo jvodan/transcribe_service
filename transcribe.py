@@ -80,7 +80,7 @@ def watch_dir():
         observer.stop()
     observer.join()
 
-def translate_dir(d, r = False):
+def translate_dir(d, r = False, translator):
     c = len(os.listdir(d))
     while c > 0:
      for filename in os.listdir(d):
@@ -122,7 +122,7 @@ def main():
     
     if args.verbose: print(f"Translator Model loaded using model #{args.model_name}") 
 
-    translate_dir(args.wav_path, args.recursive) 
+    translate_dir(args.wav_path, args.recursive, translator) 
 
     if args.watch == True:
         if args.verbose: print(f"Watching Dir #{args.wav_path}")
