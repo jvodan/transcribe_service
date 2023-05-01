@@ -107,7 +107,7 @@ def main():
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose output`")
     args = parser.parse_args()
 
-    post_action = Post(args.move_to_dir,args.delete)
+    post_action = PostAction(args.move_to_dir,args.delete)
     
     if args.verbose: print("Starting translation services")
 
