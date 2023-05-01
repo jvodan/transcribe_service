@@ -62,8 +62,8 @@ class WhisperTranslator:
         else:
             print(f"#{result['text']}\n")
             
-        if post_action is not None:
-            post_action.post_action(file_path)
+        if self.post_action is not None:
+            self.post_action.post_action(file_path)
 
 def watch_dir():
     event_handler = WavDetectorHandler(translator=translator)
