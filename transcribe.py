@@ -116,8 +116,8 @@ def main():
         fp16=args.fp16,
         output_path=args.output_path,
         pipe_path=args.pipe_path,
-        post_action,
-        args.verbose
+        post_action=post_action,
+        verbose = args.verbose
     )
     
     if args.verbose: print(f"Translator Model loaded using model #{args.model_name}") 
