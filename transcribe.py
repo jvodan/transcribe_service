@@ -81,17 +81,12 @@ def watch_dir():
         observer.stop()
     observer.join()
 
-def translate_dir(d, r , translator):
-    c = len(os.listdir(d))
-    while c > 0:
+def translate_dir(d, translator):
      for filename in os.listdir(d):
       #if filename.endswith(".wav"):
       filepath = os.path.join(d, filename)
       translator.translate(filepath)
-     if r == False:
-      c = 0
-     else:
-      c = len(os.listdir(d))
+
       
 def main():
 
@@ -123,7 +118,11 @@ def main():
     
     if args.verbose: print(f"Translator Model loaded using model #{args.model_name}") 
 
-    translate_dir(args.wav_path, args.recursive, translator) 
+    if args.recursive is True:
+        while len(os.listdir(args.wav_path)) > 0:
+          translate_dir(args.wav_path, translator)
+    else:
+        translate_dir(args.wav_path, translator)       
 
     if args.watch == True:
         if args.verbose: print(f"Watching Dir #{args.wav_path}")
