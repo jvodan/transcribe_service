@@ -128,16 +128,18 @@ def main():
       args.delete = os.environ['delete']                
     
     if 'pipe_path' in os.environ and args.pipe_path is None:
-      args.pipe_path = os.environ['pipe_path']     
+      if os.environ['pipe_path'] is not None: 
+          args.pipe_path = os.environ['pipe_path']     
       
     if 'output_path' in os.environ and args.output_path is None:
       args.output_path = os.environ['output_path']
     
     if 'fp16' in os.environ and args.fp16 is None:
-      args.fp16 = os.environ['fp16']     
+      if os.environ['fp16'] is not None: 
+       args.fp16 = os.environ['fp16']     
     
     if 'wav_path' in os.environ and args.wav_path is None:
-      args.wav_path = os.environ['fp16']     
+      args.wav_path = os.environ['wav_path']     
                            
        
     model_file = os.path.join(model_path, model_name)
@@ -150,7 +152,7 @@ def main():
         verbose = args.verbose
     )
     
-    if args.verbose: print(f"Translator Model loaded using model #{args.model_name}") 
+    if args.verbose: print(f"Translator Model loaded using model #{args.model_name} with #{args}") 
 
     if args.recursive is True:
         while len(os.listdir(args.wav_path)) > 0:
