@@ -11,6 +11,7 @@ from watchdog.events import FileSystemEventHandler
 import argparse
 
 
+
 class WavDetectorHandler(FileSystemEventHandler):
     def __init__(self, translator):
         self.translator = translator
@@ -91,7 +92,7 @@ def translate_dir(d, translator):
 def main():
 
     parser = argparse.ArgumentParser(description="Whisper Translator Command Line Arguments")
-    parser.add_argument("model_name", help="The name of the Whisper model to use. tiny|base|small|medium")
+    parser.add_argument("-M", "--model_name", help="The name of the Whisper model to use. tiny|base|small|medium")
     parser.add_argument("-f", "--fp16", action="store_true", help="Enable mixed-precision inference. 16 not always faster 32 better on maxwell")
     parser.add_argument("-w", "--wav-path", help="The path to the input directory of WAVs to transcribe.")
     parser.add_argument("-o", "--output-path", help="The directory path to write the output transcript files.")
@@ -107,8 +108,40 @@ def main():
     
     if args.verbose: print("Starting translation services")
 
+    if 'verbose' in os.environ & args.verbose is None:
+      args.verbose = os.environ['verbose']
+      
+    if 'model_name' in os.environ & args.model_name is None:
+      args.model_name = os.environ['model_name']      
+      
+    if 'model_path' in os.environ & args.model_path is None:
+      args.model_path = os.environ['model_path']       
+    
+    if 'recursive' in os.environ & args.recursive is None:
+      args.recursive = os.environ['recursive']          
+    
+    if 'move_to_dir' in os.environ & args.move_to_dir is None:
+      args.move_to_dir = os.environ['move_to_dir']       
+    
+    if 'delete' in os.environ & args.delete is None:
+      args.delete = os.environ['delete']                
+    
+    if 'pipe_path' in os.environ & args.pipe_path is None:
+      args.pipe_path = os.environ['pipe_path']     
+      
+    if 'output_path' in os.environ & args.output_path is None:
+      args.output_path = os.environ['output_path']
+    
+    if 'fp16' in os.environ & args.fp16 is None:
+      args.fp16 = os.environ['fp16']     
+    
+    if 'wav_path' in os.environ & args.wav_path is None:
+      args.wav_path = os.environ['fp16']     
+                           
+       
+    model_file = os.path.join(model_path, model_name)
     translator = WhisperTranslator(
-        model_name=args.model_name,
+        model_file=args.model_name,
         fp16=args.fp16,
         output_path=args.output_path,
         pipe_path=args.pipe_path,
