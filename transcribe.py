@@ -127,9 +127,9 @@ def main():
     if 'delete' in os.environ and args.delete is None:
       args.delete = os.environ['delete']                
     
-    if 'pipe_path' in os.environ and args.pipe_path is None:
-      if os.environ['pipe_path'] is not None: 
-          args.pipe_path = os.environ['pipe_path']     
+   # if 'pipe_path' in os.environ and args.pipe_path is None:
+    #  if os.environ['pipe_path'] is not None: 
+     #     args.pipe_path = os.environ['pipe_path']     
       
     if 'output_path' in os.environ and args.output_path is None:
       args.output_path = os.environ['output_path']
