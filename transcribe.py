@@ -142,9 +142,10 @@ def main():
       args.wav_path = os.environ['wav_path']     
                            
        
-    model_file = os.path.join(args.model_path, args.model_name)
+    model_file_path = os.path.join(args.model_path, args.model_name)
+    
     translator = WhisperTranslator(
-        model_file=model_file,
+        model=model_file_path,
         fp16=args.fp16,
         output_path=args.output_path,
         pipe_path=args.pipe_path,
