@@ -145,7 +145,7 @@ def main():
     model_file_path = os.path.join(args.model_path, args.model_name)
     
     translator = WhisperTranslator(
-        model=model_file_path,
+        model_name=model_file_path,
         fp16=args.fp16,
         output_path=args.output_path,
         pipe_path=args.pipe_path,
