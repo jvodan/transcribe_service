@@ -108,34 +108,34 @@ def main():
     
     if args.verbose: print("Starting translation services")
 
-    if 'verbose' in os.environ & args.verbose is None:
+    if 'verbose' in os.environ and args.verbose is None:
       args.verbose = os.environ['verbose']
       
-    if 'model_name' in os.environ & args.model_name is None:
+    if 'model_name' in os.environ and args.model_name is None:
       args.model_name = os.environ['model_name']      
       
-    if 'model_path' in os.environ & args.model_path is None:
+    if 'model_path' in os.environ and args.model_path is None:
       args.model_path = os.environ['model_path']       
     
-    if 'recursive' in os.environ & args.recursive is None:
+    if 'recursive' in os.environ and args.recursive is None:
       args.recursive = os.environ['recursive']          
     
-    if 'move_to_dir' in os.environ & args.move_to_dir is None:
+    if 'move_to_dir' in os.environ and args.move_to_dir is None:
       args.move_to_dir = os.environ['move_to_dir']       
     
-    if 'delete' in os.environ & args.delete is None:
+    if 'delete' in os.environ and args.delete is None:
       args.delete = os.environ['delete']                
     
-    if 'pipe_path' in os.environ & args.pipe_path is None:
+    if 'pipe_path' in os.environ and args.pipe_path is None:
       args.pipe_path = os.environ['pipe_path']     
       
-    if 'output_path' in os.environ & args.output_path is None:
+    if 'output_path' in os.environ and args.output_path is None:
       args.output_path = os.environ['output_path']
     
-    if 'fp16' in os.environ & args.fp16 is None:
+    if 'fp16' in os.environ and args.fp16 is None:
       args.fp16 = os.environ['fp16']     
     
-    if 'wav_path' in os.environ & args.wav_path is None:
+    if 'wav_path' in os.environ and args.wav_path is None:
       args.wav_path = os.environ['fp16']     
                            
        
