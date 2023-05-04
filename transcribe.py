@@ -95,7 +95,7 @@ def main():
     parser.add_argument("-M", "--model_name", help="The name of the Whisper model to use. tiny|base|small|medium")
     parser.add_argument("-f", "--fp16", action="store_true", help="Enable mixed-precision inference. 16 not always faster 32 better on maxwell")
     parser.add_argument("-w", "--wav-path", help="The path to the input directory of WAVs to transcribe.")
-    parser.add_argument("-p", "--model-path", help="The path to the directory containing the models. Leave blank for ~/.cache/whisper")
+    parser.add_argument("-P", "--model-path", help="The path to the directory containing the models. Leave blank for ~/.cache/whisper")
     parser.add_argument("-o", "--output-path", help="The directory path to write the output transcript files.")
     parser.add_argument("-p", "--pipe-path", help="The path to the named pipe to write the output transcript to.")
     parser.add_argument("-W", "--watch", action="store_true", help="Watch the wav_path and transcbribe files as they appear.")
@@ -127,9 +127,9 @@ def main():
     if 'delete' in os.environ and args.delete is None:
       args.delete = os.environ['delete']                
     
-   # if 'pipe_path' in os.environ and args.pipe_path is None:
-    #  if os.environ['pipe_path'] is not None: 
-     #     args.pipe_path = os.environ['pipe_path']     
+    if 'pipe_path' in os.environ and args.pipe_path is None:
+      if os.environ['pipe_path'] is not None: 
+          args.pipe_path = os.environ['pipe_path']     
       
     if 'output_path' in os.environ and args.output_path is None:
       args.output_path = os.environ['output_path']
